@@ -1,0 +1,530 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2865
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 import React, \{ useState \} from 'react';\
+import \{ Heart, Play, MapPin, Share2, Menu, X, ChevronRight, Linkedin, Facebook, Twitter, ArrowLeft, ArrowRight, Minus, Plus \} from 'lucide-react';\
+\
+const PositivusLanding = () => \{\
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);\
+  const [activeTestimonial, setActiveTestimonial] = useState(0);\
+  const [expandedProcess, setExpandedProcess] = useState(0);\
+  const [contactType, setContactType] = useState('sayhi');\
+\
+  const services = [\
+    \{ title: 'Search engine optimization', bg: 'bg-[#F3F3F3]', textColor: 'text-black', hasHighlight: true \},\
+    \{ title: 'Pay-per-click advertising', bg: 'bg-[#B9FF66]', textColor: 'text-black', hasHighlight: false \},\
+    \{ title: 'Social Media Marketing', bg: 'bg-[#191A23]', textColor: 'text-white', hasHighlight: true \},\
+    \{ title: 'Email Marketing', bg: 'bg-[#F3F3F3]', textColor: 'text-black', hasHighlight: true \},\
+    \{ title: 'Content Creation', bg: 'bg-[#B9FF66]', textColor: 'text-black', hasHighlight: false \},\
+    \{ title: 'Analytics and Tracking', bg: 'bg-[#191A23]', textColor: 'text-white', hasHighlight: true \}\
+  ];\
+\
+  const team = [\
+    \{ name: 'John Smith', role: 'CEO and Founder', experience: '10+ years of experience in digital marketing, Expertise in SEO, PPC, and content strategy' \},\
+    \{ name: 'Jane Doe', role: 'Director of Operations', experience: '7+ years of experience in project management and team leadership. Strong organizational and communication skills' \},\
+    \{ name: 'Michael Brown', role: 'Senior SEO Specialist', experience: '5+ years of experience in SEO and content creation. Proficient in keyword research and on-page optimization' \},\
+    \{ name: 'Emily Johnson', role: 'PPC Manager', experience: '3+ years of experience in paid search advertising. Skilled in campaign management and performance analysis' \},\
+    \{ name: 'Brian Williams', role: 'Social Media Specialist', experience: '4+ years of experience in social media marketing. Proficient in creating and scheduling content, analyzing metrics, and building engagement' \},\
+    \{ name: 'Sarah Kim', role: 'Content Creator', experience: '2+ years of experience in writing and editing. Skilled in creating compelling, SEO-optimized content for various industries' \}\
+  ];\
+\
+  const testimonials = [\
+    \{\
+      text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",\
+      author: "John Smith",\
+      position: "Marketing Director at XYZ Corp"\
+    \},\
+    \{\
+      text: "We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.",\
+      author: "John Smith",\
+      position: "Marketing Director at XYZ Corp"\
+    \}\
+  ];\
+\
+  const processSteps = [\
+    \{\
+      title: 'Consultation',\
+      description: 'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.'\
+    \},\
+    \{ title: 'Research and Strategy Development', description: 'We conduct thorough research and develop a comprehensive strategy.' \},\
+    \{ title: 'Implementation', description: 'We execute the strategy with precision and attention to detail.' \},\
+    \{ title: 'Monitoring and Optimization', description: 'Continuous monitoring and optimization for best results.' \},\
+    \{ title: 'Reporting and Communication', description: 'Regular reports and transparent communication throughout.' \},\
+    \{ title: 'Continual Improvement', description: 'Ongoing refinement and improvement of strategies.' \}\
+  ];\
+\
+  return (\
+    <div className="min-h-screen bg-white" style=\{\{ fontFamily: 'Space Grotesk, sans-serif' \}\}>\
+      \{/* Navigation */\}\
+      <nav className="bg-white">\
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">\
+          <div className="flex justify-between items-center h-20">\
+            <div className="flex items-center space-x-2.5">\
+              <svg width="36" height="29" viewBox="0 0 36 29" fill="none">\
+                <rect x="18" y="0" width="25.46" height="25.46" rx="4" fill="black" transform="rotate(45 18 0)"/>\
+              </svg>\
+              <span className="text-[28px] font-normal" style=\{\{ letterSpacing: '-0.01em' \}\}>Positivus</span>\
+            </div>\
+            \
+            <div className="hidden lg:flex items-center space-x-10">\
+              <a href="#about" className="text-black hover:text-gray-600 text-[18px] font-normal">About us</a>\
+              <a href="#services" className="text-black hover:text-gray-600 text-[18px] font-normal">Services</a>\
+              <a href="#cases" className="text-black hover:text-gray-600 text-[18px] font-normal">Use Cases</a>\
+              <a href="#pricing" className="text-black hover:text-gray-600 text-[18px] font-normal">Pricing</a>\
+              <a href="#blog" className="text-black hover:text-gray-600 text-[18px] font-normal">Blog</a>\
+              <button className="px-[35px] py-[20px] border border-black rounded-[14px] hover:bg-gray-100 transition text-[18px] font-normal">\
+                Request a quote\
+              </button>\
+            </div>\
+\
+            <button className="lg:hidden" onClick=\{() => setMobileMenuOpen(!mobileMenuOpen)\}>\
+              \{mobileMenuOpen ? <X size=\{28\} /> : <Menu size=\{28\} />\}\
+            </button>\
+          </div>\
+        </div>\
+      </nav>\
+\
+      \{/* Mobile Menu */\}\
+      \{mobileMenuOpen && (\
+        <div className="lg:hidden bg-white border-t border-gray-200 py-6 px-4">\
+          <div className="flex flex-col space-y-5">\
+            <a href="#about" className="text-black text-[18px]">About us</a>\
+            <a href="#services" className="text-black text-[18px]">Services</a>\
+            <a href="#cases" className="text-black text-[18px]">Use Cases</a>\
+            <a href="#pricing" className="text-black text-[18px]">Pricing</a>\
+            <a href="#blog" className="text-black text-[18px]">Blog</a>\
+            <button className="px-[35px] py-[20px] border border-black rounded-[14px] text-[18px]">Request a quote</button>\
+          </div>\
+        </div>\
+      )\}\
+\
+      \{/* Hero Section */\}\
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">\
+          <div>\
+            <h1 className="text-[43px] sm:text-[50px] lg:text-[60px] font-medium leading-[1.05] mb-[35px]" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Navigating the digital landscape for success\
+            </h1>\
+            <p className="text-[18px] sm:text-[20px] leading-[28px] mb-[40px] text-black font-normal">\
+              Our digital marketing agency helps businesses grow and succeed online through a range of services including SEO, PPC, social media marketing, and content creation.\
+            </p>\
+            <button className="px-[35px] py-[20px] bg-[#191A23] text-white rounded-[14px] hover:bg-black transition text-[18px] sm:text-[20px] font-normal">\
+              Book a consultation\
+            </button>\
+          </div>\
+          \
+          <div className="relative">\
+            <div className="relative w-full h-[400px] sm:h-[500px] flex items-center justify-center">\
+              \{/* Illustration elements */\}\
+              <div className="absolute inset-0 flex items-center justify-center">\
+                <svg className="absolute w-full h-full max-w-[450px] max-h-[450px]" viewBox="0 0 450 450">\
+                  <circle cx="225" cy="225" r="200" fill="none" stroke="#F3F3F3" strokeWidth="2"/>\
+                  <circle cx="225" cy="225" r="150" fill="none" stroke="#F3F3F3" strokeWidth="2"/>\
+                </svg>\
+              </div>\
+              \
+              \{/* Megaphone */\}\
+              <div className="relative z-10 transform -rotate-12">\
+                <div className="w-48 sm:w-64 h-48 sm:h-64 flex items-center justify-center">\
+                  <svg className="w-full h-full" viewBox="0 0 240 240">\
+                    <path d="M60 120 L180 60 L180 180 L60 120 Z" fill="#B9FF66" stroke="#191A23" strokeWidth="3"/>\
+                    <circle cx="60" cy="120" r="40" fill="white" stroke="#191A23" strokeWidth="3"/>\
+                    <circle cx="60" cy="120" r="22" fill="#B9FF66" stroke="#191A23" strokeWidth="2"/>\
+                    <rect x="175" y="85" width="45" height="70" rx="3" fill="white" stroke="#191A23" strokeWidth="3"/>\
+                  </svg>\
+                </div>\
+              </div>\
+              \
+              \{/* Floating icons */\}\
+              <div className="absolute top-8 sm:top-12 right-8 sm:right-12 w-12 sm:w-14 h-12 sm:h-14 bg-black rounded-full flex items-center justify-center">\
+                <Heart className="text-white w-6 h-6 sm:w-7 sm:h-7" fill="white"/>\
+              </div>\
+              <div className="absolute bottom-16 sm:bottom-20 right-4 sm:right-8 w-12 sm:w-14 h-12 sm:h-14 bg-[#B9FF66] rounded-full flex items-center justify-center border-2 border-black">\
+                <Share2 className="text-black w-5 h-5 sm:w-6 sm:h-6" />\
+              </div>\
+              <div className="absolute top-20 sm:top-24 left-0 sm:left-4 w-12 sm:w-14 h-12 sm:h-14 bg-black rounded-full flex items-center justify-center">\
+                <Play className="text-[#B9FF66] w-5 h-5 sm:w-6 sm:h-6" fill="#B9FF66"/>\
+              </div>\
+              <div className="absolute bottom-8 sm:bottom-12 left-4 sm:left-8 w-12 sm:w-14 h-12 sm:h-14 bg-[#B9FF66] rounded-full flex items-center justify-center border-2 border-black">\
+                <MapPin className="text-black w-5 h-5 sm:w-6 sm:h-6" />\
+              </div>\
+              \
+              \{/* Star shapes */\}\
+              <div className="absolute top-28 sm:top-32 left-16 sm:left-20 text-2xl sm:text-4xl">\uc0\u10022 </div>\
+              <div className="absolute bottom-28 sm:bottom-32 right-16 sm:right-20 text-xl sm:text-2xl">\uc0\u10022 </div>\
+            </div>\
+          </div>\
+        </div>\
+\
+        \{/* Client Logos */\}\
+        <div className="mt-16 lg:mt-20 flex flex-wrap justify-center lg:justify-between items-center gap-6 sm:gap-8 lg:gap-4 grayscale">\
+          <div className="text-2xl sm:text-3xl font-bold">amazon</div>\
+          <div className="text-2xl sm:text-3xl font-bold italic" style=\{\{ fontFamily: 'cursive' \}\}>dribbble</div>\
+          <div className="text-2xl sm:text-3xl font-semibold">HubSpot</div>\
+          <div className="flex items-center gap-2">\
+            <div className="w-6 sm:w-8 h-6 sm:h-8 bg-black"></div>\
+            <span className="text-2xl sm:text-3xl font-bold">Notion</span>\
+          </div>\
+          <div className="text-3xl sm:text-4xl font-bold tracking-wider">NETFLIX</div>\
+          <div className="text-2xl sm:text-3xl font-semibold">zoom</div>\
+        </div>\
+      </section>\
+\
+      \{/* Services Section */\}\
+      <section id="services" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="mb-12 lg:mb-16">\
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 mb-8">\
+            <h2 className="text-[36px] sm:text-[40px] font-medium bg-[#B9FF66] px-[7px] rounded-[7px] inline-block" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Services\
+            </h2>\
+            <p className="text-[16px] sm:text-[18px] leading-[23px] max-w-xl font-normal">\
+              At our digital marketing agency, we offer a range of services to help businesses grow and succeed online. These services include:\
+            </p>\
+          </div>\
+        </div>\
+\
+        <div className="grid sm:grid-cols-2 gap-8 lg:gap-10">\
+          \{services.map((service, index) => (\
+            <div \
+              key=\{index\} \
+              className=\{`$\{service.bg\} $\{service.textColor\} p-10 sm:p-12 lg:p-[50px] rounded-[45px] border border-[#191A23] shadow-[0_5px_0_0_#191A23] min-h-[280px] sm:min-h-[310px] flex flex-col justify-between`\}\
+            >\
+              <div className="flex justify-between items-start mb-16 sm:mb-20">\
+                <h3 className="text-[24px] sm:text-[26px] font-medium max-w-[260px] sm:max-w-[280px] leading-[1.2]" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+                  \{service.hasHighlight ? (\
+                    <>\
+                      <span className="bg-[#B9FF66] px-[7px] rounded-[7px] inline-block mb-1">\{service.title.split(' ')[0]\}</span>\
+                      \{' '\}\
+                      <span className="bg-[#B9FF66] px-[7px] rounded-[7px] inline-block">\{service.title.split(' ').slice(1).join(' ')\}</span>\
+                    </>\
+                  ) : (\
+                    service.title\
+                  )\}\
+                </h3>\
+                <div className="w-10 sm:w-12 h-10 sm:h-12 flex-shrink-0"></div>\
+              </div>\
+              \
+              <div className="flex items-center gap-4">\
+                <div className=\{`w-10 h-10 $\{service.textColor === 'text-white' ? 'bg-white' : 'bg-black'\} rounded-full flex items-center justify-center flex-shrink-0`\}>\
+                  <ChevronRight className=\{service.textColor === 'text-white' ? 'text-[#B9FF66]' : 'text-white'\} size=\{20\} />\
+                </div>\
+                <span className="text-[18px] sm:text-[20px] font-normal">Learn more</span>\
+              </div>\
+            </div>\
+          ))\}\
+        </div>\
+      </section>\
+\
+      \{/* Working Process */\}\
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="mb-12 lg:mb-16">\
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 mb-8">\
+            <h2 className="text-[36px] sm:text-[40px] font-medium bg-[#B9FF66] px-[7px] rounded-[7px] inline-block" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Our Working Process\
+            </h2>\
+            <p className="text-[16px] sm:text-[18px] leading-[23px] font-normal">\
+              Step-by-Step Guide to Achieving Your Business Goals\
+            </p>\
+          </div>\
+        </div>\
+\
+        <div className="space-y-6 sm:space-y-8">\
+          \{processSteps.map((step, index) => (\
+            <div \
+              key=\{index\} \
+              className=\{`$\{expandedProcess === index ? 'bg-[#B9FF66]' : 'bg-[#F3F3F3]'\} rounded-[45px] border border-[#191A23] shadow-[0_5px_0_0_#191A23] overflow-hidden`\}\
+            >\
+              <button\
+                onClick=\{() => setExpandedProcess(expandedProcess === index ? -1 : index)\}\
+                className="w-full p-8 sm:p-10 lg:p-[50px] lg:py-[41px] flex justify-between items-center"\
+              >\
+                <div className="flex items-center gap-4 sm:gap-6">\
+                  <span className="text-[48px] sm:text-[60px] font-medium leading-none" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+                    \{String(index + 1).padStart(2, '0')\}\
+                  </span>\
+                  <span className="text-[24px] sm:text-[28px] lg:text-[30px] font-medium text-left" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+                    \{step.title\}\
+                  </span>\
+                </div>\
+                <div className=\{`w-12 sm:w-14 h-12 sm:h-14 flex-shrink-0 $\{expandedProcess === index ? 'bg-white' : 'bg-[#F3F3F3]'\} rounded-full flex items-center justify-center border border-black`\}>\
+                  \{expandedProcess === index ? <Minus size=\{24\} /> : <Plus size=\{24\} />\}\
+                </div>\
+              </button>\
+              \{expandedProcess === index && (\
+                <div className="px-8 sm:px-10 lg:px-[50px] pb-8 sm:pb-10 lg:pb-[50px] pt-0 border-t border-black">\
+                  <div className="pl-0 sm:pl-20 lg:pl-24 pt-6 sm:pt-8">\
+                    <p className="text-[16px] sm:text-[18px] leading-[23px] sm:leading-[26px] font-normal">\{step.description\}</p>\
+                  </div>\
+                </div>\
+              )\}\
+            </div>\
+          ))\}\
+        </div>\
+      </section>\
+\
+      \{/* Team Section */\}\
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="mb-12 lg:mb-16">\
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 mb-8">\
+            <h2 className="text-[36px] sm:text-[40px] font-medium bg-[#B9FF66] px-[7px] rounded-[7px] inline-block" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Team\
+            </h2>\
+            <p className="text-[16px] sm:text-[18px] leading-[23px] max-w-xl font-normal">\
+              Meet the skilled and experienced team behind our successful digital marketing strategies\
+            </p>\
+          </div>\
+        </div>\
+\
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-10">\
+          \{team.map((member, index) => (\
+            <div key=\{index\} className="bg-white rounded-[45px] border border-[#191A23] shadow-[0_5px_0_0_#191A23] p-8 sm:p-10 lg:p-[35px]">\
+              <div className="flex items-start justify-between mb-6 sm:mb-7">\
+                <div className="flex items-start gap-4 sm:gap-5">\
+                  <div className="relative w-20 sm:w-24 h-20 sm:h-24 flex-shrink-0">\
+                    <div className="absolute inset-0 bg-[#B9FF66] rounded-full"></div>\
+                    <div className="absolute inset-0 bg-black rounded-full opacity-70"></div>\
+                  </div>\
+                  <div className="pt-1 sm:pt-2">\
+                    <h3 className="font-medium text-[18px] sm:text-[20px] mb-1" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+                      \{member.name\}\
+                    </h3>\
+                    <p className="text-[14px] sm:text-[16px] font-normal">\{member.role\}</p>\
+                  </div>\
+                </div>\
+                <a href="#" className="w-7 sm:w-8 h-7 sm:h-8 bg-black rounded-full flex items-center justify-center mt-1 sm:mt-2 flex-shrink-0">\
+                  <Linkedin className="text-white" size=\{15\} />\
+                </a>\
+              </div>\
+              <hr className="border-black mb-6 sm:mb-7" />\
+              <p className="text-[14px] sm:text-[16px] leading-[20px] sm:leading-[23px] font-normal">\
+                \{member.experience\}\
+              </p>\
+            </div>\
+          ))\}\
+        </div>\
+\
+        <div className="flex justify-end">\
+          <button className="px-[35px] py-[20px] bg-[#191A23] text-white rounded-[14px] hover:bg-black transition text-[18px] sm:text-[20px] font-normal">\
+            See all team\
+          </button>\
+        </div>\
+      </section>\
+\
+      \{/* Testimonials */\}\
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="mb-12 lg:mb-16">\
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 mb-8">\
+            <h2 className="text-[36px] sm:text-[40px] font-medium bg-[#B9FF66] px-[7px] rounded-[7px] inline-block" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Testimonials\
+            </h2>\
+            <p className="text-[16px] sm:text-[18px] leading-[23px] max-w-2xl font-normal">\
+              Hear from Our Satisfied Clients: Read Our Testimonials to Learn More about Our Digital Marketing Services\
+            </p>\
+          </div>\
+        </div>\
+\
+        <div className="bg-[#191A23] rounded-[45px] p-8 sm:p-12 lg:p-16 xl:p-20 relative">\
+          <div className="max-w-4xl mx-auto">\
+            <div className="relative mb-10 sm:mb-12 lg:mb-16">\
+              <div className="bg-white rounded-[45px] p-8 sm:p-10 lg:p-12 border-2 border-[#B9FF66]">\
+                <p className="text-[16px] sm:text-[18px] leading-[23px] sm:leading-[26px] mb-6 sm:mb-8 font-normal">\
+                  \{testimonials[activeTestimonial].text\}\
+                </p>\
+                <p className="font-medium text-[18px] sm:text-[20px] text-[#B9FF66]" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+                  \{testimonials[activeTestimonial].author\}\
+                </p>\
+                <p className="text-[14px] sm:text-[16px] text-black mt-1 font-normal">\
+                  \{testimonials[activeTestimonial].position\}\
+                </p>\
+              </div>\
+            </div>\
+\
+            <div className="flex justify-between items-center max-w-xs sm:max-w-md mx-auto">\
+              <button \
+                onClick=\{() => setActiveTestimonial(Math.max(0, activeTestimonial - 1))\}\
+                className="text-white hover:text-[#B9FF66] transition"\
+              >\
+                <ArrowLeft size=\{36\} className="sm:w-10 sm:h-10" />\
+              </button>\
+              \
+              <div className="flex gap-3">\
+                \{testimonials.map((_, index) => (\
+                  <button\
+                    key=\{index\}\
+                    onClick=\{() => setActiveTestimonial(index)\}\
+                    className=\{`w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full transition $\{\
+                      activeTestimonial === index ? 'bg-[#B9FF66]' : 'bg-white'\
+                    \}`\}\
+                  />\
+                ))\}\
+              </div>\
+\
+              <button \
+                onClick=\{() => setActiveTestimonial(Math.min(testimonials.length - 1, activeTestimonial + 1))\}\
+                className="text-white hover:text-[#B9FF66] transition"\
+              >\
+                <ArrowRight size=\{36\} className="sm:w-10 sm:h-10" />\
+              </button>\
+            </div>\
+          </div>\
+        </div>\
+      </section>\
+\
+      \{/* Contact Section */\}\
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">\
+        <div className="mb-12 lg:mb-16">\
+          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 mb-8">\
+            <h2 className="text-[36px] sm:text-[40px] font-medium bg-[#B9FF66] px-[7px] rounded-[7px] inline-block" style=\{\{ letterSpacing: '-0.01em' \}\}>\
+              Contact Us\
+            </h2>\
+            <p className="text-[16px] sm:text-[18px] leading-[23px] font-normal">\
+              Connect with Us: Let's Discuss Your Digital Marketing Needs\
+            </p>\
+          </div>\
+        </div>\
+\
+        <div className="bg-[#F3F3F3] rounded-[45px] p-8 sm:p-12 lg:p-14 xl:p-16 relative">\
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">\
+            <div>\
+              <div className="flex gap-6 sm:gap-8 mb-8 sm:mb-10">\
+                <label className="flex items-center gap-3 sm:gap-4 cursor-pointer">\
+                  <div className=\{`w-6 sm:w-7 h-6 sm:h-7 rounded-full border-2 border-black flex items-center justify-center $\{contactType === 'sayhi' ? 'bg-[#B9FF66]' : 'bg-white'\}`\}>\
+                    \{contactType === 'sayhi' && <div className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-black"></div>\}\
+                  </div>\
+                  <span className="text-[16px] sm:text-[18px] font-normal">Say Hi</span>\
+                </label>\
+                <label className="flex items-center gap-3 sm:gap-4 cursor-pointer">\
+                  <div className=\{`w-6 sm:w-7 h-6 sm:h-7 rounded-full border-2 border-black flex items-center justify-center $\{contactType === 'quote' ? 'bg-[#B9FF66]' : 'bg-white'\}`\}>\
+                    \{contactType === 'quote' && <div className="w-3 sm:w-3.5 h-3 sm:h-3.5 rounded-full bg-black"></div>\}\
+                  </div>\
+                  <span className="text-[16px] sm:text-[18px] font-normal" onClick=\{() => setContactType('quote')\}>Get a Quote</span>\
+                </label>\
+              </div>\
+\
+              <div className="space-y-5 sm:space-y-6">\
+                <div>\
+                  <label className="block mb-2 sm:mb-3 font-medium text-[14px] sm:text-[16px]">Name</label>\
+                  <input\
+                    type="text"\
+                    placeholder="Name"\
+                    className="w-full px-5 sm:px-6 py-3.5 sm:py-4 rounded-[14px] border border-black focus:outline-none focus:border-[#B9FF66] bg-white text-[16px] sm:text-[18px]"\
+                  />\
+                </div>\
+                <div>\
+                  <label className="block mb-2 sm:mb-3 font-medium text-[14px] sm:text-[16px]">Email*</label>\
+                  <input\
+                    type="email"\
+                    placeholder="Email"\
+                    className="w-full px-5 sm:px-6 py-3.5 sm:py-4 rounded-[14px] border border-black focus:outline-none focus:border-[#B9FF66] bg-white text-[16px] sm:text-[18px]"\
+                  />\
+                </div>\
+                <div>\
+                  <label className="block mb-2 sm:mb-3 font-medium text-[14px] sm:text-[16px]">Message*</label>\
+                  <textarea\
+                    placeholder="Message"\
+                    rows="5"\
+                    className="w-full px-5 sm:px-6 py-3.5 sm:py-4 rounded-[14px] border border-black focus:outline-none focus:border-[#B9FF66] bg-white resize-none text-[16px] sm:text-[18px]"\
+                  ></textarea>\
+                </div>\
+                <button className="w-full px-[35px] py-[20px] bg-[#191A23] text-white rounded-[14px] hover:bg-black transition text-[18px] sm:text-[20px] font-normal">\
+                  Send Message\
+                </button>\
+              </div>\
+            </div>\
+\
+            <div className="hidden lg:flex justify-center items-center">\
+              <div className="relative w-72 xl:w-80 h-72 xl:h-80">\
+                <div className="absolute top-0 right-0 w-28 xl:w-32 h-28 xl:h-32 bg-[#191A23] transform rotate-45"></div>\
+                <div className="absolute bottom-0 left-0 w-20 xl:w-24 h-20 xl:h-24 bg-[#B9FF66] transform rotate-45"></div>\
+                \{[...Array(16)].map((_, i) => (\
+                  <div\
+                    key=\{i\}\
+                    className="absolute w-0.5 h-20 xl:h-24 bg-black origin-bottom left-1/2 top-1/2"\
+                    style=\{\{\
+                      transform: `translate(-50%, -50%) rotate($\{i * 22.5\}deg) translateY(-72px)`\
+                    \}\}\
+                  ></div>\
+                ))\}\
+              </div>\
+            </div>\
+          </div>\
+        </div>\
+      </section>\
+\
+      \{/* Footer */\}\
+      <footer className="bg-[#191A23] text-white mt-20 sm:mt-24 rounded-t-[45px]">\
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">\
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12 mb-12">\
+            <div>\
+              <div className="flex items-center gap-2.5 mb-6 sm:mb-8">\
+                <svg width="36" height="29" viewBox="0 0 36 29" fill="none">\
+                  <rect x="18" y="0" width="25.46" height="25.46" rx="4" fill="white" transform="rotate(45 18 0)"/>\
+                </svg>\
+                <span className="text-[26px] sm:text-[28px] font-normal" style=\{\{ letterSpacing: '-0.01em' \}\}>Positivus</span>\
+              </div>\
+              \
+              <div>\
+                <div className="bg-[#B9FF66] text-black px-[7px] rounded-[7px] inline-block mb-5 sm:mb-6">\
+                  <p className="font-medium text-[16px] sm:text-[18px]">Contact us:</p>\
+                </div>\
+                <div className="space-y-2.5 sm:space-y-3 text-[16px] sm:text-[18px] font-normal">\
+                  <p>Email: info@positivus.com</p>\
+                  <p>Phone: 555-567-8901</p>\
+                  <p>Address: 1234 Main St<br />Moonstone City, Stardust State 12345</p>\
+                </div>\
+              </div>\
+            </div>\
+\
+            <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 justify-start lg:justify-center">\
+              <div className="flex flex-col gap-3 sm:gap-4">\
+                <a href="#about" className="hover:text-[#B9FF66] underline text-[16px] sm:text-[18px] font-normal">About us</a>\
+                <a href="#services" className="hover:text-[#B9FF66] underline text-[16px] sm:text-[18px] font-normal">Services</a>\
+                <a href="#cases" className="hover:text-[#B9FF66] underline text-[16px] sm:text-[18px] font-normal">Use Cases</a>\
+              </div>\
+              <div className="flex flex-col gap-3 sm:gap-4">\
+                <a href="#pricing" className="hover:text-[#B9FF66] underline text-[16px] sm:text-[18px] font-normal">Pricing</a>\
+                <a href="#blog" className="hover:text-[#B9FF66] underline text-[16px] sm:text-[18px] font-normal">Blog</a>\
+              </div>\
+            </div>\
+\
+            <div className="flex gap-4 sm:gap-5">\
+              <a href="#" className="w-11 sm:w-12 h-11 sm:h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#B9FF66] transition">\
+                <Linkedin className="text-black w-5 h-5" />\
+              </a>\
+              <a href="#" className="w-11 sm:w-12 h-11 sm:h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#B9FF66] transition">\
+                <Facebook className="text-black w-5 h-5" />\
+              </a>\
+              <a href="#" className="w-11 sm:w-12 h-11 sm:h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#B9FF66] transition">\
+                <Twitter className="text-black w-5 h-5" />\
+              </a>\
+            </div>\
+          </div>\
+\
+          <div className="bg-[#292A32] rounded-[14px] p-6 sm:p-8 mb-8 sm:mb-10">\
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-center">\
+              <input\
+                type="email"\
+                placeholder="Email"\
+                className="flex-1 px-5 sm:px-6 py-3.5 sm:py-4 rounded-[14px] bg-[#292A32] text-white border border-white focus:outline-none focus:border-[#B9FF66] text-[16px] sm:text-[18px]"\
+              />\
+              <button className="px-[30px] sm:px-[35px] py-[18px] sm:py-[20px] bg-[#B9FF66] text-black rounded-[14px] hover:bg-white transition font-medium text-[16px] sm:text-[18px] whitespace-nowrap">\
+                Subscribe to news\
+              </button>\
+            </div>\
+          </div>\
+\
+          <div className="pt-6 sm:pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center gap-4">\
+            <p className="text-[14px] sm:text-[16px] font-normal">\'a9 2023 Positivus. All Rights Reserved.</p>\
+            <a href="#" className="text-[14px] sm:text-[16px] hover:text-[#B9FF66] underline font-normal">Privacy Policy</a>\
+          </div>\
+        </div>\
+      </footer>\
+    </div>\
+  );\
+\};\
+\
+export default PositivusLanding;}
